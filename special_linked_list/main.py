@@ -14,6 +14,13 @@ class Node():
         self.prev = prev
         self.next = next
     
+    def go_forward(self):
+        if self.next:
+            return self.next
+
+    def go_backward(self):
+        if self.prev:
+            return self.prev    
 
 class MySpecialList():
     my_list = []
@@ -44,10 +51,11 @@ class MySpecialList():
         reverse_list = []
         list_lenght = len(self.my_list)
         i = list_lenght - 1
+        reverse_list.append(self.my_list[i].data)
 
-        while i >= 0:
-            reverse_list.append(self.my_list[i].data)
-            i  -= 1
+        while i > 0:
+            reverse_list.append(self.my_list[i].go_backward().data)
+            i -= 1
 
         return reverse_list
 
